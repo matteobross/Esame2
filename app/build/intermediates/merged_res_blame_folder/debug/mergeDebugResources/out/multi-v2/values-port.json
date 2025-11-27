@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "it.progmob.esame2.app-mergeDebugResources-75:/values-port/values-port.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\matte\\.gradle\\caches\\8.13\\transforms\\78a824df749eb6c3850a87cfa16d7e5d\\transformed\\appcompat-1.7.1\\res\\values-port\\values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        }
+    ]
+}

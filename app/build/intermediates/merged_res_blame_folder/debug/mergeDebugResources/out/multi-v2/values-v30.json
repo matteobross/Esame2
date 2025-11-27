@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "it.progmob.esame2.app-mergeDebugResources-75:/values-v30/values-v30.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\matte\\.gradle\\caches\\8.13\\transforms\\9b4c3622fec611112fee3934eccf91ea\\transformed\\material3-release\\res\\values-v30\\values-v30.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "72",
+                        "endOffsets": "123"
+                    }
+                }
+            ]
+        }
+    ]
+}
