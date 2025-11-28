@@ -4,17 +4,19 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import java.io.File
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import it.progmob.esame2.network.FileUploader
 import kotlinx.coroutines.launch
+import java.io.File
 
 class PlayActivity : AppCompatActivity() {
 
     private var mediaPlayer: MediaPlayer? = null
-    private lateinit var listView: ListView
-    private lateinit var btnStop: Button
     private lateinit var txtTitle: TextView
+    private lateinit var btnStop: Button
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,56 +24,54 @@ class PlayActivity : AppCompatActivity() {
 
         txtTitle = findViewById(R.id.txtTitle)
         btnStop = findViewById(R.id.btnStop)
-        listView = findViewById(R.id.listViewFiles)
+        recyclerView = findViewById(R.id.rvFiles)
 
-        txtTitle.text = "📁 Seleziona una registrazione"
-
-        // Carica lista file audio
-        loadFileList()
-
-        // Click su un file = riproduci
-        listView.setOnItemClickListener { _, _, position, _ ->
-            val name = listView.adapter.getItem(position) as String
-            val path = "${externalCacheDir?.absolutePath}/$name"
-            playRecording(path)
-        }
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        loadFiles()
 
         btnStop.setOnClickListener { stopPlayback() }
     }
 
-    private fun loadFileList() {
+    private fun loadFiles() {
+        val dir = externalCacheDir
+        val files = dir?.listFiles { f ->
+            f.name.endsWith(".m4a") || f.name.endsWith(".mp3")
+        }?.sortedByDescending { it.lastModified() } ?: emptyList()
 
-        val files = externalCacheDir?.listFiles { file ->
-            val name = file.name.lowercase()
-            name.endsWith(".m4a") ||
-                    name.endsWith(".mp3") ||
-                    name.endsWith(".wav") ||
-                    name.endsWith(".aac") ||
-                    name.endsWith(".ogg") ||
-                    name.endsWith(".flac") ||
-                    name.endsWith(".3gp")
-        }?.sortedByDescending { it.lastModified() }
-
-        if (files.isNullOrEmpty()) {
+        if (files.isEmpty()) {
             Toast.makeText(this, "Nessun file trovato", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val names = files.map { it.name }
-        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, names)
-        listView.adapter = adapter
+        val adapter = FileAdapter(
+            files,
+            onPlay = { file ->
+                playRecording(file)
+            },
+            onUpload = { file ->
+                lifecycleScope.launch {
+                    val ok = FileUploader.upload(file.absolutePath)
+                    Toast.makeText(
+                        this@PlayActivity,
+                        if (ok) "✔ Inviato al server" else "❌ Errore invio",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        )
+
+        recyclerView.adapter = adapter
     }
 
-    private fun playRecording(path: String) {
+    private fun playRecording(file: File) {
         try {
             mediaPlayer?.release()
             mediaPlayer = MediaPlayer().apply {
-                setDataSource(path)
+                setDataSource(file.absolutePath)
                 prepare()
                 start()
-                Toast.makeText(this@PlayActivity, "▶️ Riproduzione: $path", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@PlayActivity, "▶️ ${file.name}", Toast.LENGTH_SHORT).show()
                 setOnCompletionListener {
-                    Toast.makeText(this@PlayActivity, "✔ Fine", Toast.LENGTH_SHORT).show()
                     release()
                     mediaPlayer = null
                 }

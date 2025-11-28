@@ -10,49 +10,22 @@
         android:id="@+id/txtTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="🎧 Registrazioni"
+        android:text="📁 Seleziona una registrazione"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"
         android:paddingBottom="12dp" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:paddingBottom="10dp">
+        android:text="⏹ Stop" />
 
-        <Button
-            android:id="@+id/btnPlayLast"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="▶️ Ascolta ultimo"
-            android:layout_marginEnd="8dp" />
-
-        <Button
-            android:id="@+id/btnStop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="⏹️ Stop" />
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="📁 Archivio registrazioni:"
-        android:textColor="#BBBBBB"
-        android:paddingTop="8dp"
-        android:paddingBottom="6dp" />
-
-    <ListView
-        android:id="@+id/listViewFiles"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvFiles"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp"
-        android:background="#1E1E1E"
-        android:textColor="#FFFFFF" />
-
+        android:paddingTop="12dp" />
 </LinearLayout>

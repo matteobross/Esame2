@@ -11,25 +11,19 @@ import retrofit2.http.POST
 import retrofit2.http.Part
 import java.io.File
 
-// -----------------------------
-// INTERFACCIA API
-// -----------------------------
 interface UploadAPI {
 
     @Multipart
-    @POST("/upload")  // <-- cambia con il tuo endpoint
+    @POST("/upload")
     suspend fun uploadFile(
         @Part file: MultipartBody.Part
     ): retrofit2.Response<Void>
 }
 
-// -----------------------------
-// CLASSE PER INVIARE FILE
-// -----------------------------
 object FileUploader {
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://TUO_SERVER.com")  // <-- cambia!
+        .baseUrl("http://TUO_SERVER:8000") // <-- CAMBIA!
         .client(OkHttpClient())
         .addConverterFactory(GsonConverterFactory.create())
         .build()
@@ -41,7 +35,7 @@ object FileUploader {
         if (!file.exists()) return false
 
         val requestBody = RequestBody.create(
-            "audio/m4a".toMediaTypeOrNull(),
+            "audio/*".toMediaTypeOrNull(),
             file
         )
 

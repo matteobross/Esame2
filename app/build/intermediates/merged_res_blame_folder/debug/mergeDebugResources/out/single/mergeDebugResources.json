@@ -1,11 +1,7 @@
 [
     {
-        "merged": "it.progmob.esame2.app-debug-77:/raw_piano_asharp.wav.flat",
-        "source": "it.progmob.esame2.app-main-79:/raw/piano_asharp.wav"
-    },
-    {
-        "merged": "it.progmob.esame2.app-debug-77:/raw_snare.wav.flat",
-        "source": "it.progmob.esame2.app-main-79:/raw/snare.wav"
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\raw_piano_g.wav.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\raw\\piano_g.wav"
     },
     {
         "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\xml_backup_rules.xml.flat",
@@ -16,64 +12,64 @@
         "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "it.progmob.esame2.app-debug-77:/raw_piano_g.wav.flat",
-        "source": "it.progmob.esame2.app-main-79:/raw/piano_g.wav"
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\raw_piano_b.wav.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\raw\\piano_b.wav"
+    },
+    {
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\raw_piano_dsharp.wav.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\raw\\piano_dsharp.wav"
     },
     {
         "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\xml_data_extraction_rules.xml.flat",
         "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "it.progmob.esame2.app-debug-77:/raw_piano_b.wav.flat",
-        "source": "it.progmob.esame2.app-main-79:/raw/piano_b.wav"
-    },
-    {
-        "merged": "it.progmob.esame2.app-debug-77:/layout_activity_main.xml.flat",
-        "source": "it.progmob.esame2.app-main-79:/layout/activity_main.xml"
-    },
-    {
-        "merged": "it.progmob.esame2.app-debug-77:/raw_piano_gsharp.wav.flat",
-        "source": "it.progmob.esame2.app-main-79:/raw/piano_gsharp.wav"
+        "merged": "it.progmob.esame2.app-debug-77:/layout_activity_play.xml.flat",
+        "source": "it.progmob.esame2.app-main-79:/layout/activity_play.xml"
     },
     {
         "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\layout_activity_login.xml.flat",
         "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\layout\\activity_login.xml"
     },
     {
-        "merged": "it.progmob.esame2.app-debug-77:/layout_activity_arranger.xml.flat",
-        "source": "it.progmob.esame2.app-main-79:/layout/activity_arranger.xml"
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\layout_activity_arranger.xml.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\layout\\activity_arranger.xml"
     },
     {
-        "merged": "it.progmob.esame2.app-debug-77:/raw_piano_e.wav.flat",
-        "source": "it.progmob.esame2.app-main-79:/raw/piano_e.wav"
-    },
-    {
-        "merged": "it.progmob.esame2.app-debug-77:/raw_hihat.wav.flat",
-        "source": "it.progmob.esame2.app-main-79:/raw/hihat.wav"
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\raw_kick.wav.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\raw\\kick.wav"
     },
     {
         "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\layout_activity_register.xml.flat",
         "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\layout\\activity_register.xml"
     },
     {
-        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\mipmap-mdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\raw_piano_c.wav.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\raw\\piano_c.wav"
     },
     {
-        "merged": "it.progmob.esame2.app-debug-77:/raw_piano_c.wav.flat",
-        "source": "it.progmob.esame2.app-main-79:/raw/piano_c.wav"
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
         "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "it.progmob.esame2.app-debug-77:/raw_piano_dsharp.wav.flat",
-        "source": "it.progmob.esame2.app-main-79:/raw/piano_dsharp.wav"
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\raw_piano_csharp.wav.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\raw\\piano_csharp.wav"
     },
     {
         "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\raw_piano_e.wav.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\raw\\piano_e.wav"
+    },
+    {
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\raw_hihat.wav.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\raw\\hihat.wav"
     },
     {
         "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\mipmap-hdpi_ic_launcher.webp.flat",
@@ -88,12 +84,12 @@
         "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "it.progmob.esame2.app-debug-77:/raw_piano_a.wav.flat",
-        "source": "it.progmob.esame2.app-main-79:/raw/piano_a.wav"
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\raw_piano_gsharp.wav.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\raw\\piano_gsharp.wav"
     },
     {
-        "merged": "it.progmob.esame2.app-debug-77:/raw_kick.wav.flat",
-        "source": "it.progmob.esame2.app-main-79:/raw/kick.wav"
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\raw_piano_a.wav.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\raw\\piano_a.wav"
     },
     {
         "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\layout_activity_main.xml.flat",
@@ -104,12 +100,24 @@
         "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "it.progmob.esame2.app-debug-77:/raw_piano_csharp.wav.flat",
-        "source": "it.progmob.esame2.app-main-79:/raw/piano_csharp.wav"
-    },
-    {
         "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\raw_snare.wav.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\raw\\snare.wav"
+    },
+    {
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\raw_piano_d.wav.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\raw\\piano_d.wav"
+    },
+    {
+        "merged": "it.progmob.esame2.app-debug-77:/layout_item_file.xml.flat",
+        "source": "it.progmob.esame2.app-main-79:/layout/item_file.xml"
+    },
+    {
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\raw_piano_asharp.wav.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\raw\\piano_asharp.wav"
     },
     {
         "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\drawable_ic_launcher_foreground.xml.flat",
@@ -120,12 +128,16 @@
         "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "it.progmob.esame2.app-debug-77:/raw_piano_f.wav.flat",
-        "source": "it.progmob.esame2.app-main-79:/raw/piano_f.wav"
-    },
-    {
         "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\layout_activity_newrec.xml.flat",
         "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\layout\\activity_newrec.xml"
+    },
+    {
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\raw_piano_fsharp.wav.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\raw\\piano_fsharp.wav"
+    },
+    {
+        "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\raw_piano_f.wav.flat",
+        "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\raw\\piano_f.wav"
     },
     {
         "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\drawable_ic_launcher_background.xml.flat",
@@ -142,13 +154,5 @@
     {
         "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\mipmap-xxxhdpi\\ic_launcher.webp"
-    },
-    {
-        "merged": "it.progmob.esame2.app-debug-77:/raw_piano_d.wav.flat",
-        "source": "it.progmob.esame2.app-main-79:/raw/piano_d.wav"
-    },
-    {
-        "merged": "it.progmob.esame2.app-debug-77:/raw_piano_fsharp.wav.flat",
-        "source": "it.progmob.esame2.app-main-79:/raw/piano_fsharp.wav"
     }
 ]

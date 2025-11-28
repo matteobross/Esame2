@@ -3826,10 +3826,10 @@ id btnGoRegister
 id btnLogin
 id btnLogout
 id btnPlay
-id btnPlayLast
 id btnRecord
 id btnRegister
 id btnStop
+id btnUpload
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3986,7 +3986,6 @@ id line1
 id line3
 id linear
 id listMode
-id listViewFiles
 id list_item
 id m3_side_sheet
 id marquee
@@ -4125,6 +4124,7 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id rvFiles
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -4241,6 +4241,7 @@ id transition_scene_layoutid_cache
 id transition_transform
 id triangle
 id txtBpm
+id txtFileName
 id txtKey
 id txtTitle
 id txtWelcome
@@ -4416,6 +4417,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_file
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
