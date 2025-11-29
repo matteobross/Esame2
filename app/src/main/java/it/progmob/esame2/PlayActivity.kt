@@ -14,7 +14,6 @@ import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
-import org.json.JSONObject
 import java.io.File
 import java.io.IOException
 
@@ -92,7 +91,7 @@ class PlayActivity : AppCompatActivity() {
     }
 
     /**
-     *  UPLOAD DEL FILE AL SERVER FASTAPI
+     * UPLOAD DEL FILE AL SERVER FASTAPI
      */
     private fun uploadAudio(file: File) {
 
@@ -128,7 +127,7 @@ class PlayActivity : AppCompatActivity() {
 
                 override fun onResponse(call: Call, response: Response) {
                     val json = response.body?.string()
-
+                    android.util.Log.d("DEBUG_SERVER", "Risposta Server: $json")
                     runOnUiThread {
                         if (json == null) {
                             Toast.makeText(
@@ -145,9 +144,15 @@ class PlayActivity : AppCompatActivity() {
                             Toast.LENGTH_SHORT
                         ).show()
 
-                        // PASSA I RISULTATI ALLA ARRANGEMENT ACTIVITY
+                        // PASSA I RISULTATI ALLA ARRANGER ACTIVITY
                         val intent = Intent(this@PlayActivity, ArrangerActivity::class.java)
+
+                        // 1. Passiamo il JSON dell'analisi
                         intent.putExtra("analysis_json", json)
+
+                        // 2. Passiamo il PERCORSO DEL FILE VOCALE (Modifica importante!)
+                        intent.putExtra("voice_path", file.absolutePath)
+
                         startActivity(intent)
                     }
                 }

@@ -22,13 +22,13 @@ id btnUpload
 id editEmail
 id editPassword
 id radioDrums
+id radioNone
 id radioPop
 id radioReggae
 id radioRock
 id rvFiles
 id spinnerProgression
 id txtBpm
-id txtDuration
 id txtFileName
 id txtKey
 id txtTitle

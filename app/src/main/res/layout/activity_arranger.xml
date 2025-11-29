@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:paddingTop="50dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,6 +20,7 @@
             android:text="Key: -"
             android:textSize="22sp"
             android:textStyle="bold"
+            android:textColor="#000000"
             android:layout_marginBottom="10dp" />
 
         <!-- BPM -->
@@ -28,23 +30,16 @@
             android:layout_height="wrap_content"
             android:text="BPM: -"
             android:textSize="20sp"
+            android:textColor="#000000"
             android:layout_marginBottom="10dp" />
 
-        <!-- DURATION -->
-        <TextView
-            android:id="@+id/txtDuration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Durata: - sec"
-            android:textSize="18sp"
-            android:layout_marginBottom="25dp" />
-
-        <!-- PROGRESSIONE ARMONICA -->
+        <!-- PROGESSIONE -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Progressione Armonica:"
+            android:text="Progressione Piano:"
             android:textSize="18sp"
+            android:textColor="#000000"
             android:layout_marginBottom="5dp" />
 
         <Spinner
@@ -54,42 +49,60 @@
             android:layout_marginBottom="25dp"
             android:spinnerMode="dropdown" />
 
-        <!-- SELEZIONE BATTERIA -->
+        <!-- BATTERIA -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Stile Batteria:"
             android:textSize="18sp"
+            android:textColor="#000000"
             android:layout_marginBottom="5dp" />
 
-        <RadioGroup
-            android:id="@+id/radioDrums"
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginBottom="30dp">
 
-            <RadioButton
-                android:id="@+id/radioPop"
+            <RadioGroup
+                android:id="@+id/radioDrums"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pop"
-                android:checked="true" />
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/radioRock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Rock"
-                android:layout_marginStart="20dp" />
+                <!-- Opzione NESSUNA -->
+                <RadioButton
+                    android:id="@+id/radioNone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nessuna"
+                    android:textColor="#000000" />
 
-            <RadioButton
-                android:id="@+id/radioReggae"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Reggae"
-                android:layout_marginStart="20dp" />
-        </RadioGroup>
+                <RadioButton
+                    android:id="@+id/radioPop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pop"
+                    android:textColor="#000000"
+                    android:checked="true"
+                    android:layout_marginStart="10dp" />
+
+                <RadioButton
+                    android:id="@+id/radioRock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rock"
+                    android:textColor="#000000"
+                    android:layout_marginStart="10dp" />
+
+                <RadioButton
+                    android:id="@+id/radioReggae"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reggae"
+                    android:textColor="#000000"
+                    android:layout_marginStart="10dp" />
+            </RadioGroup>
+        </HorizontalScrollView>
 
         <!-- PULSANTI -->
         <LinearLayout
@@ -124,4 +137,3 @@
 
     </LinearLayout>
 </ScrollView>
-

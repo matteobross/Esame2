@@ -21,7 +21,8 @@ class ArrangerActivity : AppCompatActivity() {
 
     // Audio
     private lateinit var soundPool: SoundPool
-    private var mediaPlayer: MediaPlayer? = null
+    // Player per la voce registrata
+    private var voicePlayer: MediaPlayer? = null
 
     // Piano notes
     private val pianoNotes = HashMap<String, Int>()
@@ -36,8 +37,12 @@ class ArrangerActivity : AppCompatActivity() {
     private var isPlaying = false
     private var step = 0
 
-    // VARIABILI MUSICALI ARRIVATE DAL SERVER
-    private var bpm = 120
+    // VARIABILI PER SINCRONIZZAZIONE (Anti-Drift)
+    private var startTime: Long = 0
+    private var totalSixteenthsPlayed: Long = 0
+
+    // VARIABILI MUSICALI
+    private var bpm: Double = 120.0
     private var key = "C"
     private var duration: Double = 0.0
 
@@ -53,46 +58,51 @@ class ArrangerActivity : AppCompatActivity() {
         btnStop = findViewById(R.id.btnStop)
 
         // ------------------------------------------------------------------
-        // 🔥 RICEVI IL JSON DAL SERVER (PlayActivity → ArrangerActivity)
+        // 🔥 1. RICEVI E AGGIORNA I DATI DAL SERVER
         // ------------------------------------------------------------------
         val jsonString = intent.getStringExtra("analysis_json")
 
         if (jsonString != null) {
             try {
                 val json = JSONObject(jsonString)
-
-                bpm = json.optDouble("bpm", 120.0).toInt()
+                bpm = json.optDouble("bpm", 120.0)
                 key = json.optString("key", "C")
                 duration = json.optDouble("duration", 0.0)
-
             } catch (e: Exception) {
                 Toast.makeText(this, "Errore lettura JSON: ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
 
-        // Aggiorna UI
         txtKey.text = "Key: $key"
-        txtBpm.text = "BPM: $bpm"
+        txtBpm.text = String.format("BPM: %.1f", bpm)
 
-        // Progressioni
-        val progressions = listOf("I - V - vi - IV", "ii - V - I", "vi - IV - I - V")
+        // ------------------------------------------------------------------
+        // AGGIUNTA OPZIONE "Nessun Piano"
+        // ------------------------------------------------------------------
+        // Ora la lista include esplicitamente "Nessun Piano" all'inizio
+        val progressions = listOf("Nessun Piano", "I - V - vi - IV", "ii - V - I", "vi - IV - I - V")
+
         spinnerProgression.adapter = ArrayAdapter(
             this,
             android.R.layout.simple_spinner_item,
             progressions
         )
+        // Selezioniamo la prima progressione vera (indice 1) di default
+        spinnerProgression.setSelection(1)
 
-        // Setup SoundPool
+        // Setup Audio
         soundPool = SoundPool.Builder().setMaxStreams(12).build()
         loadPianoNotes()
         loadDrumSamples()
 
-        // CARICA L’AUDIO ORIGINALE (loop)
-        val audioPath = intent.getStringExtra("audioPath")
-        if (audioPath != null) {
-            mediaPlayer = MediaPlayer().apply {
-                setDataSource(audioPath)
-                isLooping = true
+        // ------------------------------------------------------------------
+        // 🔥 2. CARICA LA VOCE IN LOOP
+        // ------------------------------------------------------------------
+        val voicePath = intent.getStringExtra("voice_path")
+        if (voicePath != null) {
+            voicePlayer = MediaPlayer().apply {
+                setDataSource(voicePath)
+                isLooping = true  // LOOP ATTIVO
                 prepare()
             }
         }
@@ -102,7 +112,60 @@ class ArrangerActivity : AppCompatActivity() {
     }
 
     // -------------------------------------------------------
-    // LOAD SAMPLES
+    // START / STOP
+    // -------------------------------------------------------
+
+    private fun startAll() {
+        if (isPlaying) return
+        isPlaying = true
+
+        step = 0
+        totalSixteenthsPlayed = 0
+        startTime = System.currentTimeMillis()
+
+        voicePlayer?.start()
+        handler.post(loopRunnable)
+    }
+
+    private fun stopAll() {
+        isPlaying = false
+        handler.removeCallbacks(loopRunnable)
+
+        if (voicePlayer != null && voicePlayer!!.isPlaying) {
+            voicePlayer?.pause()
+        }
+        voicePlayer?.seekTo(0)
+    }
+
+    // -------------------------------------------------------
+    // ENGINE SINCRONIZZATO
+    // -------------------------------------------------------
+
+    private val loopRunnable = object : Runnable {
+        override fun run() {
+            if (!isPlaying) return
+
+            playDrums(step)
+            playHarmony(step)
+
+            step = (step + 1) % 16
+            totalSixteenthsPlayed++
+
+            val msPerBeat = 60000.0 / bpm
+            val stepDuration = msPerBeat / 4.0
+
+            val nextExpectedTime = startTime + (stepDuration * totalSixteenthsPlayed).toLong()
+            val now = System.currentTimeMillis()
+
+            var delay = nextExpectedTime - now
+            if (delay < 0) delay = 0
+
+            handler.postDelayed(this, delay)
+        }
+    }
+
+    // -------------------------------------------------------
+    // CARICAMENTO SUONI
     // -------------------------------------------------------
 
     private fun loadPianoNotes() {
@@ -127,42 +190,7 @@ class ArrangerActivity : AppCompatActivity() {
     }
 
     // -------------------------------------------------------
-    // MAIN LOOP
-    // -------------------------------------------------------
-
-    private fun startAll() {
-        if (isPlaying) return
-        isPlaying = true
-        step = 0
-
-        mediaPlayer?.start()
-        startLoop()
-    }
-
-    private fun stopAll() {
-        isPlaying = false
-        mediaPlayer?.pause()
-        mediaPlayer?.seekTo(0)
-    }
-
-    private fun startLoop() {
-        val stepMs = (60000f / bpm / 4f).toLong()
-
-        handler.post(object : Runnable {
-            override fun run() {
-                if (!isPlaying) return
-
-                playDrums(step)
-                playHarmony(step)
-
-                step = (step + 1) % 16
-                handler.postDelayed(this, stepMs)
-            }
-        })
-    }
-
-    // -------------------------------------------------------
-    // DRUM ENGINE
+    // LOGICA MUSICALE
     // -------------------------------------------------------
 
     private fun playDrums(step: Int) {
@@ -170,22 +198,28 @@ class ArrangerActivity : AppCompatActivity() {
             R.id.radioPop -> "pop"
             R.id.radioRock -> "rock"
             R.id.radioReggae -> "reggae"
+            R.id.radioNone -> "none" // Gestione Muto
             else -> "pop"
         }
 
+        if (style == "none") return // Se è muto, esci subito
+
         when (style) {
             "pop" -> {
+                // MODIFICATO: POP PIÙ LENTO (HiHat solo sugli ottavi)
                 if (step == 0 || step == 8) soundPool.play(kickId,1f,1f,1,0,1f)
                 if (step == 4 || step == 12) soundPool.play(snareId,1f,1f,1,0,1f)
-                soundPool.play(hihatId, 0.4f,0.4f,1,0,1f)
-            }
 
+                // HiHat suona solo sui passi pari (0, 2, 4...) invece che sempre
+                if (step % 2 == 0) {
+                    soundPool.play(hihatId, 0.4f,0.4f,1,0,1f)
+                }
+            }
             "rock" -> {
                 if (step in listOf(0,2,8)) soundPool.play(kickId,1f,1f,1,0,1f)
                 if (step == 4 || step == 12) soundPool.play(snareId,1f,1f,1,0,1f)
                 if (step % 4 == 0) soundPool.play(hihatId,0.4f,0.4f,1,0,1f)
             }
-
             "reggae" -> {
                 if (step == 8) {
                     soundPool.play(kickId,1f,1f,1,0,1f)
@@ -197,17 +231,19 @@ class ArrangerActivity : AppCompatActivity() {
         }
     }
 
-    // -------------------------------------------------------
-    // HARMONY ENGINE
-    // -------------------------------------------------------
-
     private fun playHarmony(step: Int) {
+        val selectedIndex = spinnerProgression.selectedItemPosition
+
+        // Se hai scelto "Nessun Piano" (che ora è all'indice 0), non suonare nulla
+        if (selectedIndex == 0) return
+
         if (step % 4 != 0) return
 
-        val progression = when (spinnerProgression.selectedItemPosition) {
-            0 -> listOf("I", "V", "vi", "IV")
-            1 -> listOf("ii", "V", "I")
-            2 -> listOf("vi", "IV", "I", "V")
+        // Mappiamo l'indice dello spinner alla progressione corretta
+        val progression = when (selectedIndex) {
+            1 -> listOf("I", "V", "vi", "IV")
+            2 -> listOf("ii", "V", "I")
+            3 -> listOf("vi", "IV", "I", "V")
             else -> listOf("I", "V", "vi", "IV")
         }
 
@@ -225,7 +261,6 @@ class ArrangerActivity : AppCompatActivity() {
         )
 
         val intervals = semitones[chordType] ?: return
-
         val noteOrder = listOf("C","C#","D","D#","E","F","F#","G","G#","A","A#","B")
         val rootIndex = noteOrder.indexOf(root)
 
@@ -242,30 +277,29 @@ class ArrangerActivity : AppCompatActivity() {
         val majorScale = listOf(0,2,4,5,7,9,11)
 
         val degreeMap = mapOf(
-            "I" to 0,
-            "ii" to 1,
-            "iii" to 2,
-            "IV" to 3,
-            "V" to 4,
-            "vi" to 5,
-            "vii°" to 6
+            "I" to 0, "ii" to 1, "iii" to 2, "IV" to 3,
+            "V" to 4, "vi" to 5, "vii°" to 6
         )
 
         val keyIndex = semitones.indexOf(keyRoot)
         val degIndex = degreeMap[degree] ?: 0
 
-        val rootNote = semitones[(keyIndex + majorScale[degIndex])
+        val rootNote = semitones[(keyIndex + majorScale[degIndex]) % 12]
 
-                % 12]
-
-        val type =
-            when (degree) {
-                "I","IV","V" -> "major"
-                "ii","iii","vi" -> "minor"
-                "vii°" -> "dim"
-                else -> "major"
-            }
-
+        val type = when (degree) {
+            "I","IV","V" -> "major"
+            "ii","iii","vi" -> "minor"
+            "vii°" -> "dim"
+            else -> "major"
+        }
         return Pair(rootNote, type)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        stopAll()
+        voicePlayer?.release()
+        voicePlayer = null
+        soundPool.release()
     }
 }
