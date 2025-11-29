@@ -1,113 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:gravity="top|center_horizontal"
     android:background="#FFFFFF">
 
-    <!-- TONALITÀ -->
-    <TextView
-        android:id="@+id/txtKey"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Key: C"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="10dp" />
-
-    <!-- BPM -->
-    <TextView
-        android:id="@+id/txtBpm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BPM: 120"
-        android:textSize="18sp"
-        android:layout_marginBottom="20dp" />
-
-    <!-- PROGRESSIONE ARMONICA -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Progressione:"
-        android:textSize="18sp"
-        android:layout_marginBottom="5dp" />
-
-    <Spinner
-        android:id="@+id/spinnerProgression"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:spinnerMode="dropdown"
-        android:layout_marginBottom="25dp" />
-
-    <!-- SELEZIONE BATTERIA -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Batteria:"
-        android:textSize="18sp"
-        android:layout_marginBottom="5dp" />
-
-    <RadioGroup
-        android:id="@+id/radioDrums"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="30dp">
-
-        <RadioButton
-            android:id="@+id/radioPop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Pop"
-            android:checked="true" />
-
-        <RadioButton
-            android:id="@+id/radioRock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Rock"
-            android:layout_marginStart="20dp" />
-
-        <RadioButton
-            android:id="@+id/radioReggae"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reggae"
-            android:layout_marginStart="20dp" />
-    </RadioGroup>
-
-    <!-- PULSANTI PLAY/STOP -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="top|center_horizontal">
 
-        <Button
-            android:id="@+id/btnPlay"
-            android:layout_width="0dp"
+        <!-- KEY -->
+        <TextView
+            android:id="@+id/txtKey"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PLAY"
-            android:layout_weight="1"
-            android:backgroundTint="#4CAF50"
-            android:textColor="#FFFFFF"
-            android:padding="10dp"
-            android:textSize="18sp" />
+            android:text="Key: -"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp" />
 
-        <Button
-            android:id="@+id/btnStop"
-            android:layout_width="0dp"
+        <!-- BPM -->
+        <TextView
+            android:id="@+id/txtBpm"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="STOP"
-            android:layout_weight="1"
-            android:backgroundTint="#F44336"
-            android:textColor="#FFFFFF"
-            android:padding="10dp"
+            android:text="BPM: -"
+            android:textSize="20sp"
+            android:layout_marginBottom="10dp" />
+
+        <!-- DURATION -->
+        <TextView
+            android:id="@+id/txtDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Durata: - sec"
             android:textSize="18sp"
-            android:layout_marginStart="15dp" />
-    </LinearLayout>
+            android:layout_marginBottom="25dp" />
 
-</LinearLayout>
+        <!-- PROGRESSIONE ARMONICA -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Progressione Armonica:"
+            android:textSize="18sp"
+            android:layout_marginBottom="5dp" />
+
+        <Spinner
+            android:id="@+id/spinnerProgression"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:spinnerMode="dropdown" />
+
+        <!-- SELEZIONE BATTERIA -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stile Batteria:"
+            android:textSize="18sp"
+            android:layout_marginBottom="5dp" />
+
+        <RadioGroup
+            android:id="@+id/radioDrums"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="30dp">
+
+            <RadioButton
+                android:id="@+id/radioPop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pop"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/radioRock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rock"
+                android:layout_marginStart="20dp" />
+
+            <RadioButton
+                android:id="@+id/radioReggae"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reggae"
+                android:layout_marginStart="20dp" />
+        </RadioGroup>
+
+        <!-- PULSANTI -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btnPlay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="PLAY"
+                android:padding="10dp"
+                android:textSize="18sp"
+                android:backgroundTint="#4CAF50"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnStop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="STOP"
+                android:padding="10dp"
+                android:textSize="18sp"
+                android:backgroundTint="#F44336"
+                android:textColor="#FFFFFF"
+                android:layout_marginStart="15dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
 

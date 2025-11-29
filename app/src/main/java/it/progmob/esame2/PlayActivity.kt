@@ -1,5 +1,6 @@
 package it.progmob.esame2
 
+import android.content.Intent
 import android.media.MediaPlayer
 import android.os.Bundle
 import android.widget.*
@@ -7,9 +8,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import it.progmob.esame2.network.FileUploader
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import org.json.JSONObject
 import java.io.File
+import java.io.IOException
 
 class PlayActivity : AppCompatActivity() {
 
@@ -17,6 +24,8 @@ class PlayActivity : AppCompatActivity() {
     private lateinit var txtTitle: TextView
     private lateinit var btnStop: Button
     private lateinit var recyclerView: RecyclerView
+
+    private val client = OkHttpClient()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,14 +58,7 @@ class PlayActivity : AppCompatActivity() {
                 playRecording(file)
             },
             onUpload = { file ->
-                lifecycleScope.launch {
-                    val ok = FileUploader.upload(file.absolutePath)
-                    Toast.makeText(
-                        this@PlayActivity,
-                        if (ok) "✔ Inviato al server" else "❌ Errore invio",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+                uploadAudio(file)
             }
         )
 
@@ -89,10 +91,73 @@ class PlayActivity : AppCompatActivity() {
         mediaPlayer = null
     }
 
+    /**
+     *  UPLOAD DEL FILE AL SERVER FASTAPI
+     */
+    private fun uploadAudio(file: File) {
+
+        Toast.makeText(this, "⏳ Invio al server...", Toast.LENGTH_SHORT).show()
+
+        lifecycleScope.launch(Dispatchers.IO) {
+
+            val requestBody = MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart(
+                    "file",
+                    file.name,
+                    file.asRequestBody("audio/m4a".toMediaTypeOrNull())
+                )
+                .build()
+
+            val request = Request.Builder()
+                .url("http://84.8.250.185:8000/analyze")
+                .post(requestBody)
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+
+                override fun onFailure(call: Call, e: IOException) {
+                    runOnUiThread {
+                        Toast.makeText(
+                            this@PlayActivity,
+                            "❌ Errore upload: ${e.message}",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    val json = response.body?.string()
+
+                    runOnUiThread {
+                        if (json == null) {
+                            Toast.makeText(
+                                this@PlayActivity,
+                                "❌ Risposta vuota dal server",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            return@runOnUiThread
+                        }
+
+                        Toast.makeText(
+                            this@PlayActivity,
+                            "✔ Analisi completata",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        // PASSA I RISULTATI ALLA ARRANGEMENT ACTIVITY
+                        val intent = Intent(this@PlayActivity, ArrangerActivity::class.java)
+                        intent.putExtra("analysis_json", json)
+                        startActivity(intent)
+                    }
+                }
+            })
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         mediaPlayer?.release()
         mediaPlayer = null
     }
 }
-

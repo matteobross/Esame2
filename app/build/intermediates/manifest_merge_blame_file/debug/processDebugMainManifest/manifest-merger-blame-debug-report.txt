@@ -8,26 +8,26 @@
 8        android:minSdkVersion="24"
 9        android:targetSdkVersion="36" />
 10
-11    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-11-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:5:5-71
-11-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:5:22-68
-12    <uses-permission
-12-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:6:5-8:38
-13        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-13-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:7:9-65
-14        android:maxSdkVersion="32" />
-14-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:8:9-35
-15
-16    <uses-feature
-16-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:10:5-12:35
-17        android:name="android.hardware.microphone"
-17-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:11:9-51
-18        android:required="true" />
-18-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:12:9-32
-19
-20    <uses-permission android:name="android.permission.INTERNET" />
-20-->[com.google.firebase:firebase-auth:24.0.1] C:\Users\matte\.gradle\caches\8.13\transforms\ca0d32318bfee17a415c562839a56d68\transformed\firebase-auth-24.0.1\AndroidManifest.xml:25:5-67
-20-->[com.google.firebase:firebase-auth:24.0.1] C:\Users\matte\.gradle\caches\8.13\transforms\ca0d32318bfee17a415c562839a56d68\transformed\firebase-auth-24.0.1\AndroidManifest.xml:25:22-64
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:4:5-67
+11-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:4:22-64
+12    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+12-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:6:5-71
+12-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:6:22-68
+13    <uses-permission
+13-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:7:5-9:38
+14        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+14-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:8:9-65
+15        android:maxSdkVersion="32" />
+15-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:9:9-35
+16
+17    <uses-feature
+17-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:11:5-13:35
+18        android:name="android.hardware.microphone"
+18-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:12:9-51
+19        android:required="true" />
+19-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:13:9-32
+20
 21    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 21-->[com.google.firebase:firebase-auth:24.0.1] C:\Users\matte\.gradle\caches\8.13\transforms\ca0d32318bfee17a415c562839a56d68\transformed\firebase-auth-24.0.1\AndroidManifest.xml:26:5-79
 21-->[com.google.firebase:firebase-auth:24.0.1] C:\Users\matte\.gradle\caches\8.13\transforms\ca0d32318bfee17a415c562839a56d68\transformed\firebase-auth-24.0.1\AndroidManifest.xml:26:22-76
@@ -62,72 +62,73 @@
 33-->[androidx.core:core:1.17.0] C:\Users\matte\.gradle\caches\8.13\transforms\7646b4c15af81c007fe1f4edb36ebae8\transformed\core-1.17.0\AndroidManifest.xml:26:22-94
 34
 35    <application
-35-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:14:5-52:19
+35-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:15:5-54:19
 36        android:allowBackup="true"
-36-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:15:9-35
+36-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:16:9-35
 37        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 37-->[androidx.core:core:1.17.0] C:\Users\matte\.gradle\caches\8.13\transforms\7646b4c15af81c007fe1f4edb36ebae8\transformed\core-1.17.0\AndroidManifest.xml:28:18-86
 38        android:dataExtractionRules="@xml/data_extraction_rules"
-38-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:16:9-65
+38-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:17:9-65
 39        android:debuggable="true"
 40        android:extractNativeLibs="false"
 41        android:fullBackupContent="@xml/backup_rules"
-41-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:17:9-54
+41-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:18:9-54
 42        android:icon="@mipmap/ic_launcher"
-42-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:18:9-43
+42-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:19:9-43
 43        android:label="@string/app_name"
-43-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:19:9-41
+43-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:20:9-41
 44        android:roundIcon="@mipmap/ic_launcher_round"
-44-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:20:9-54
+44-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:21:9-54
 45        android:supportsRtl="true"
-45-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:21:9-35
-46        android:testOnly="true"
-47        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" >
-47-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:22:9-68
+45-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:22:9-35
+46        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
+46-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:24:9-68
+47        android:usesCleartextTraffic="true" >
+47-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:23:9-44
 48        <activity
-48-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:24:9-31:20
+48-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:26:9-33:20
 49            android:name="it.progmob.esame2.LoginActivity"
-49-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:25:13-42
+49-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:27:13-42
 50            android:exported="true" >
-50-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:26:13-36
+50-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:28:13-36
 51            <intent-filter>
-51-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:27:13-30:29
+51-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:29:13-32:29
 52                <action android:name="android.intent.action.MAIN" />
-52-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:28:17-68
-52-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:28:25-66
+52-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:30:17-68
+52-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:30:25-66
 53
 54                <category android:name="android.intent.category.LAUNCHER" />
-54-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:29:17-76
-54-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:29:27-74
+54-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:31:17-76
+54-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:31:27-74
 55            </intent-filter>
 56        </activity>
 57        <activity
-57-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:33:9-35:40
+57-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:35:9-37:40
 58            android:name="it.progmob.esame2.RegisterActivity"
-58-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:34:13-45
+58-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:36:13-45
 59            android:exported="false" />
-59-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:35:13-37
+59-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:37:13-37
 60        <activity
-60-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:37:9-39:40
+60-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:39:9-41:40
 61            android:name="it.progmob.esame2.MainActivity"
-61-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:38:13-41
+61-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:40:13-41
 62            android:exported="false" />
-62-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:39:13-37
+62-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:41:13-37
 63        <activity
-63-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:41:9-43:39
+63-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:43:9-45:39
 64            android:name="it.progmob.esame2.NewRecActivity"
-64-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:42:13-43
+64-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:44:13-43
 65            android:exported="false" />
-65-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:43:13-37
+65-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:45:13-37
 66        <activity android:name="it.progmob.esame2.PlayActivity" />
-66-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:45:9-50
-66-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:45:19-47
+66-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:47:9-50
+66-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:47:19-47
 67        <activity
-67-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:47:9-49:40
+67-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:49:9-51:40
 68            android:name="it.progmob.esame2.ArrangerActivity"
-68-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:48:13-45
+68-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:50:13-45
 69            android:exported="false" />
-69-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:49:13-37
+69-->C:\Users\matte\Downloads\Kotlin-Android\Esame\Esame2\app\src\main\AndroidManifest.xml:51:13-37
 70        <activity
 70-->[androidx.compose.ui:ui-tooling-android:1.7.0] C:\Users\matte\.gradle\caches\8.13\transforms\dd36617bf2a64d201d8b0136be389038\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
 71            android:name="androidx.compose.ui.tooling.PreviewActivity"
