@@ -3822,6 +3822,7 @@ id browser_actions_menu_items
 id browser_actions_menu_view
 id btnAscolto
 id btnAvanti
+id btnFretboard
 id btnGoRegister
 id btnLogin
 id btnLogout
@@ -3859,6 +3860,7 @@ id confirm_button
 id constraint
 id consume_window_insets_tag
 id container
+id containerFret
 id content
 id contentPanel
 id contiguous
@@ -4242,6 +4244,7 @@ id transition_scene_layoutid_cache
 id transition_transform
 id triangle
 id txtBpm
+id txtChordList
 id txtFileName
 id txtKey
 id txtTitle
@@ -4398,6 +4401,7 @@ layout activity_main
 layout activity_newrec
 layout activity_play
 layout activity_register
+layout bottom_fretboard
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_dialog

@@ -69,12 +69,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <!-- Opzione NESSUNA -->
+
                 <RadioButton
                     android:id="@+id/radioNone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nessuna"
+                    android:buttonTint="#000000"
                     android:textColor="#000000" />
 
                 <RadioButton
@@ -84,6 +85,7 @@
                     android:text="Pop"
                     android:textColor="#000000"
                     android:checked="true"
+                    android:buttonTint="#000000"
                     android:layout_marginStart="10dp" />
 
                 <RadioButton
@@ -92,6 +94,7 @@
                     android:layout_height="wrap_content"
                     android:text="Rock"
                     android:textColor="#000000"
+                    android:buttonTint="#000000"
                     android:layout_marginStart="10dp" />
 
                 <RadioButton
@@ -100,6 +103,7 @@
                     android:layout_height="wrap_content"
                     android:text="Reggae"
                     android:textColor="#000000"
+                    android:buttonTint="#000000"
                     android:layout_marginStart="10dp" />
             </RadioGroup>
         </HorizontalScrollView>
@@ -134,6 +138,24 @@
                 android:textColor="#FFFFFF"
                 android:layout_marginStart="15dp" />
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtChordList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Accordi nella tonalità:"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:padding="10dp" />
+        <Button
+            android:id="@+id/btnFretboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mostra Fretboard"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"/>
 
     </LinearLayout>
 </ScrollView>

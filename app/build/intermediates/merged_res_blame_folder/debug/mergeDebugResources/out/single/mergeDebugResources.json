@@ -104,6 +104,10 @@
         "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
+        "merged": "it.progmob.esame2.app-debug-77:/layout_bottom_fretboard.xml.flat",
+        "source": "it.progmob.esame2.app-main-79:/layout/bottom_fretboard.xml"
+    },
+    {
         "merged": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-debug-77:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\matte\\.gradle\\daemon\\8.13\\it.progmob.esame2.app-main-79:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },

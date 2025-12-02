@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Tema AppCompat (puoi cancellarlo se non serve più) -->
+
     <style name="Theme.Esame2" parent="Theme.AppCompat.Light.NoActionBar" />
 
-    <!-- Tema corretto usato dall'app -->
+
     <style name="Theme.App" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Personalizza i colori se vuoi -->
+        <item name="android:windowBackground">#1E3A8A</item>
+
     </style>
 
 </resources>

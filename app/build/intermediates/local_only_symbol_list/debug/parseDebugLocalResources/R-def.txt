@@ -11,6 +11,7 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 id btnAscolto
 id btnAvanti
+id btnFretboard
 id btnGoRegister
 id btnLogin
 id btnLogout
@@ -19,6 +20,7 @@ id btnRecord
 id btnRegister
 id btnStop
 id btnUpload
+id containerFret
 id editEmail
 id editPassword
 id radioDrums
@@ -29,6 +31,7 @@ id radioRock
 id rvFiles
 id spinnerProgression
 id txtBpm
+id txtChordList
 id txtFileName
 id txtKey
 id txtTitle
@@ -39,6 +42,7 @@ layout activity_main
 layout activity_newrec
 layout activity_play
 layout activity_register
+layout bottom_fretboard
 layout item_file
 mipmap ic_launcher
 mipmap ic_launcher_round

@@ -24,6 +24,7 @@ class PlayActivity : AppCompatActivity() {
     private lateinit var btnStop: Button
     private lateinit var recyclerView: RecyclerView
 
+    //client è per far partire direttamente quando arriva il sever
     private val client = OkHttpClient()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +40,7 @@ class PlayActivity : AppCompatActivity() {
 
         btnStop.setOnClickListener { stopPlayback() }
     }
-
+//carico i file nella recyclerview, solo m4a e mp3
     private fun loadFiles() {
         val dir = externalCacheDir
         val files = dir?.listFiles { f ->
@@ -50,7 +51,7 @@ class PlayActivity : AppCompatActivity() {
             Toast.makeText(this, "Nessun file trovato", Toast.LENGTH_SHORT).show()
             return
         }
-
+                //questo serve per ascoltare, se clicco va a palyrecording
         val adapter = FileAdapter(
             files,
             onPlay = { file ->
@@ -64,6 +65,7 @@ class PlayActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
     }
 
+    // funzione che mi permette di riprodurre un file se ci clicco sopra
     private fun playRecording(file: File) {
         try {
             mediaPlayer?.release()
@@ -90,9 +92,9 @@ class PlayActivity : AppCompatActivity() {
         mediaPlayer = null
     }
 
-    /**
-     * UPLOAD DEL FILE AL SERVER FASTAPI
-     */
+
+    //  UPLOAD DEL FILE AL SERVER FASTAPI
+
     private fun uploadAudio(file: File) {
 
         Toast.makeText(this, "⏳ Invio al server...", Toast.LENGTH_SHORT).show()
@@ -107,12 +109,13 @@ class PlayActivity : AppCompatActivity() {
                     file.asRequestBody("audio/m4a".toMediaTypeOrNull())
                 )
                 .build()
+                                            //file audio impacchettato dentro build
 
             val request = Request.Builder()
-                .url("http://84.8.250.185:8000/analyze")
+                .url("http://84.8.250.185:8000/analyze") //questa è gia la vm oracle
                 .post(requestBody)
                 .build()
-
+                                    //la richiesta parte da qui
             client.newCall(request).enqueue(object : Callback {
 
                 override fun onFailure(call: Call, e: IOException) {
@@ -124,7 +127,7 @@ class PlayActivity : AppCompatActivity() {
                         ).show()
                     }
                 }
-
+                            //on response di attiva automaticamente per OkHttP
                 override fun onResponse(call: Call, response: Response) {
                     val json = response.body?.string()
                     android.util.Log.d("DEBUG_SERVER", "Risposta Server: $json")
@@ -150,9 +153,9 @@ class PlayActivity : AppCompatActivity() {
                         // 1. Passiamo il JSON dell'analisi
                         intent.putExtra("analysis_json", json)
 
-                        // 2. Passiamo il PERCORSO DEL FILE VOCALE (Modifica importante!)
+                        // 2. Passiamo il PERCORSO DEL FILE VOCALE
                         intent.putExtra("voice_path", file.absolutePath)
-
+                            //3. e infine dopo aver stampato il json apro arraneractivity
                         startActivity(intent)
                     }
                 }

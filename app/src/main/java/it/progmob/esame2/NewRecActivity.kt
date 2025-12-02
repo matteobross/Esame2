@@ -48,10 +48,9 @@ class NewRecActivity : AppCompatActivity() {
         }
 
     }
-
-    // -----------------------------------------------------------
+//--------------------------------------------------------------------------
+//                 inizio funzioni
     //                PERMESSI MICROFONO
-    // -----------------------------------------------------------
     private fun checkAudioPermission(): Boolean {
         val perm = android.Manifest.permission.RECORD_AUDIO
         return checkSelfPermission(perm) == PackageManager.PERMISSION_GRANTED
@@ -92,7 +91,7 @@ class NewRecActivity : AppCompatActivity() {
                 setOutputFormat(MediaRecorder.OutputFormat.MPEG_4)
                 setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
                 setOutputFile(outputFile)
-                prepare()   // <-- se manca permesso crasha (ora risolto)
+                prepare()   // <-- aggiunto perchè se manca permesso crasha
                 start()
             }
 
@@ -107,6 +106,7 @@ class NewRecActivity : AppCompatActivity() {
     }
 
     private fun stopRecording() {
+        //qua uso il metodo try per evitare che crashi, se uno di di questi metodi fallisce non crasha ma finisce la registrazione
         try {
             mediaRecorder?.apply {
                 stop()
@@ -124,6 +124,7 @@ class NewRecActivity : AppCompatActivity() {
             Toast.makeText(this, "Errore nello stop: ${e.message}", Toast.LENGTH_LONG).show()
         }
     }
+//da eliminare, vecchio modo
 
     override fun onDestroy() {
         super.onDestroy()

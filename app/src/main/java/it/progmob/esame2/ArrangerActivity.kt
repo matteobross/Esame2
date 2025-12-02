@@ -1,4 +1,5 @@
 package it.progmob.esame2
+import android.graphics.Color
 
 import android.media.MediaPlayer
 import android.media.SoundPool
@@ -7,9 +8,15 @@ import android.os.Handler
 import android.os.Looper
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomsheet.BottomSheetDialog
+
 import org.json.JSONObject
 
 class ArrangerActivity : AppCompatActivity() {
+
+
+
+
 
     // UI
     private lateinit var txtKey: TextView
@@ -20,6 +27,7 @@ class ArrangerActivity : AppCompatActivity() {
     private lateinit var btnStop: Button
 
     // Audio
+    //soundpool serve per caricare i suoni
     private lateinit var soundPool: SoundPool
     // Player per la voce registrata
     private var voicePlayer: MediaPlayer? = null
@@ -58,7 +66,7 @@ class ArrangerActivity : AppCompatActivity() {
         btnStop = findViewById(R.id.btnStop)
 
         // ------------------------------------------------------------------
-        // 🔥 1. RICEVI E AGGIORNA I DATI DAL SERVER
+        //  1. RICEVI E AGGIORNA I DATI DAL SERVER
         // ------------------------------------------------------------------
         val jsonString = intent.getStringExtra("analysis_json")
 
@@ -76,10 +84,7 @@ class ArrangerActivity : AppCompatActivity() {
         txtKey.text = "Key: $key"
         txtBpm.text = String.format("BPM: %.1f", bpm)
 
-        // ------------------------------------------------------------------
-        // AGGIUNTA OPZIONE "Nessun Piano"
-        // ------------------------------------------------------------------
-        // Ora la lista include esplicitamente "Nessun Piano" all'inizio
+
         val progressions = listOf("Nessun Piano", "I - V - vi - IV", "ii - V - I", "vi - IV - I - V")
 
         spinnerProgression.adapter = ArrayAdapter(
@@ -96,7 +101,7 @@ class ArrangerActivity : AppCompatActivity() {
         loadDrumSamples()
 
         // ------------------------------------------------------------------
-        // 🔥 2. CARICA LA VOCE IN LOOP
+        //  2. CARICA LA REC (chitarra) IN LOOP
         // ------------------------------------------------------------------
         val voicePath = intent.getStringExtra("voice_path")
         if (voicePath != null) {
@@ -109,12 +114,41 @@ class ArrangerActivity : AppCompatActivity() {
 
         btnPlay.setOnClickListener { startAll() }
         btnStop.setOnClickListener { stopAll() }
+
+        val txtChordList = findViewById<TextView>(R.id.txtChordList)
+        txtChordList.text = getChordListForKey(key)
+
+        findViewById<Button>(R.id.btnFretboard).setOnClickListener {
+            showFretboard()
+        }
+
     }
 
     // -------------------------------------------------------
-    // START / STOP
     // -------------------------------------------------------
+    private fun getChordListForKey(key: String): String {
 
+        val semitones = listOf("C","C#","D","D#","E","F","F#","G","G#","A","A#","B")
+        val majorScale = listOf(0,2,4,5,7,9,11)
+
+        val keyIndex = semitones.indexOf(key)
+
+        // Costruisci note della scala
+        val scaleNotes = majorScale.map { semitones[(keyIndex + it) % 12] }
+
+        val degrees = listOf("I", "ii", "iii", "IV", "V", "vi", "vii°")
+        val chordTypes = listOf("maj", "min", "min", "maj", "maj", "min", "dim")
+
+        val builder = StringBuilder("Accordi nella tonalità di $key:\n")
+
+        for (i in degrees.indices) {
+            builder.append("${degrees[i]} – ${scaleNotes[i]}${chordTypes[i]}\n")
+        }
+
+        return builder.toString()
+    }
+
+    // START / STOP
     private fun startAll() {
         if (isPlaying) return
         isPlaying = true
@@ -193,6 +227,8 @@ class ArrangerActivity : AppCompatActivity() {
     // LOGICA MUSICALE
     // -------------------------------------------------------
 
+
+    //HO COSTRUITOUNA DRUM MACHINE A 16 STEP, dovrebbero bastare
     private fun playDrums(step: Int) {
         val style = when (radioDrums.checkedRadioButtonId) {
             R.id.radioPop -> "pop"
@@ -206,7 +242,7 @@ class ArrangerActivity : AppCompatActivity() {
 
         when (style) {
             "pop" -> {
-                // MODIFICATO: POP PIÙ LENTO (HiHat solo sugli ottavi)
+
                 if (step == 0 || step == 8) soundPool.play(kickId,1f,1f,1,0,1f)
                 if (step == 4 || step == 12) soundPool.play(snareId,1f,1f,1,0,1f)
 
@@ -246,7 +282,7 @@ class ArrangerActivity : AppCompatActivity() {
             3 -> listOf("vi", "IV", "I", "V")
             else -> listOf("I", "V", "vi", "IV")
         }
-
+                    //lughezza dell'accordo, ora è 16/4 =4 step
         val chordDegree = progression[(step / 4) % progression.size]
         val (rootNote, chordType) = getChordFromDegree(key, chordDegree)
 
@@ -294,7 +330,7 @@ class ArrangerActivity : AppCompatActivity() {
         }
         return Pair(rootNote, type)
     }
-
+//onDestry da cancellare
     override fun onDestroy() {
         super.onDestroy()
         stopAll()
@@ -302,4 +338,60 @@ class ArrangerActivity : AppCompatActivity() {
         voicePlayer = null
         soundPool.release()
     }
+    private fun showFretboard() {
+        val dialog = BottomSheetDialog(this)
+        val view = layoutInflater.inflate(R.layout.bottom_fretboard, null)
+        dialog.setContentView(view)
+
+        val container = view.findViewById<LinearLayout>(R.id.containerFret)
+
+        val fretText = generateFretboardForKey(key)
+        val tv = TextView(this)
+        tv.text = fretText
+        tv.textSize = 16f
+        tv.setPadding(10, 10, 10, 10)
+        tv.setTextColor(Color.BLACK)
+        container.addView(tv)
+
+        dialog.show()
+    }
+    private fun generateFretboardForKey(key: String): String {
+
+        val majorScales = mapOf(
+            "C" to listOf("C","D","E","F","G","A","B"),
+            "G" to listOf("G","A","B","C","D","E","F#"),
+            "D" to listOf("D","E","F#","G","A","B","C#"),
+            "A" to listOf("A","B","C#","D","E","F#","G#"),
+            "E" to listOf("E","F#","G#","A","B","C#","D#"),
+            "B" to listOf("B","C#","D#","E","F#","G#","A#"),
+            "F#" to listOf("F#","G#","A#","B","C#","D#","F"),
+            "F" to listOf("F","G","A","A#","C","D","E")
+        )
+
+        val scale = majorScales[key] ?: majorScales["C"]!!
+
+        val tuning = listOf("E","A","D","G","B","E")   // 6 corde
+        val semitones = listOf("C","C#","D","D#","E","F","F#","G","G#","A","A#","B")
+
+        val builder = StringBuilder()
+        builder.append("Tonalità: $key maggiore\n\n")
+
+        for (string in tuning.reversed()) {
+            builder.append("$string | ")
+
+            val startIndex = semitones.indexOf(string)
+
+            for (fret in 0..12) {
+                val note = semitones[(startIndex + fret) % 12]
+                builder.append(if (note in scale) "$note " else "- ")
+            }
+
+            builder.append("\n")
+        }
+
+        return builder.toString()
+    }
+
 }
+
+
